@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antonio Construcciones – Burgos</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2ede8;--dark:#111110;--mid:#333331;--accent:#c0392b;--light:#e4dfd8;
+  --white:#ffffff;--nav-h:68px;--H:'Oswald',sans-serif;--B:'Source Sans 3',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--B);background:var(--bg);color:var(--dark);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:var(--dark);z-index:9000;display:flex;align-items:center;justify-content:space-between;padding:0 36px;border-bottom:3px solid var(--accent)}
+.logo{display:flex;flex-direction:column;line-height:1.1;text-decoration:none}
+.logo-name{font-family:var(--H);font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:2px;text-transform:uppercase}
+.logo-sub{font-size:0.62rem;color:#999;letter-spacing:1.5px;text-transform:uppercase}
+.nav-right{display:flex;align-items:center;gap:0}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links li a{display:block;color:#ddd;text-decoration:none;font-family:var(--H);font-size:0.78rem;letter-spacing:1.5px;text-transform:uppercase;padding:6px 11px;border-radius:2px;transition:background .2s,color .2s;cursor:pointer}
+.nav-links li a:hover{background:var(--accent);color:#fff}
+.nav-cta{background:var(--accent)!important;color:#fff!important}
+.nav-cta:hover{background:#a93226!important}
+.lang-wrap{display:flex;align-items:center;gap:5px;margin-left:18px;padding-left:16px;border-left:1px solid #333}
+.lb{background:none;border:1px solid #555;color:#ccc;font-family:var(--H);font-size:0.68rem;letter-spacing:1px;padding:4px 8px;cursor:pointer;border-radius:2px;transition:all .2s}
+.lb:hover,.lb.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;background:none;border:none;padding:4px}
+.burger span{display:block;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--dark);z-index:8999;flex-direction:column;padding:8px 0 16px;border-bottom:3px solid var(--accent)}
+.mob-menu.open{display:flex}
+.mob-menu a{display:block;color:#ccc;text-decoration:none;font-family:var(--H);font-size:0.93rem;letter-spacing:2px;text-transform:uppercase;padding:13px 32px;border-bottom:1px solid #1e1e1c;cursor:pointer;transition:background .2s,color .2s}
+.mob-menu a:hover{background:var(--accent);color:#fff}
+.mob-lang{display:flex;gap:8px;padding:14px 32px 2px}
+
+/* HERO */
+#inicio{position:relative;height:100vh;min-height:560px;margin-top:var(--nav-h);overflow:hidden;background:#1a1a18}
+#inicio img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;display:block}
+.hero-inner{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 8% 80px}
+.tag{font-family:var(--H);font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);border-left:3px solid var(--accent);padding-left:12px;margin-bottom:18px}
+.hero-h1{font-family:var(--H);font-size:clamp(2.4rem,5.5vw,4.8rem);font-weight:700;text-transform:uppercase;color:#fff;line-height:1.05;max-width:680px;margin-bottom:20px}
+.hero-h1 em{color:var(--accent);font-style:normal}
+.hero-sub{font-size:1.05rem;color:#ddd;max-width:460px;margin-bottom:36px;font-weight:300;line-height:1.65}
+.btn{display:inline-block;font-family:var(--H);font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;padding:13px 28px;background:var(--accent);color:#fff;text-decoration:none;border:none;border-radius:2px;cursor:pointer;transition:background .2s}
+.btn:hover{background:#a93226}
+.btn-ol{background:transparent;border:2px solid #fff;color:#fff;margin-left:12px}
+.btn-ol:hover{background:#fff;color:var(--dark)}
+.scroll-dot{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.scroll-dot span{width:16px;height:16px;border-right:2px solid rgba(255,255,255,.6);border-bottom:2px solid rgba(255,255,255,.6);transform:rotate(45deg);animation:bd 1.4s ease infinite}
+@keyframes bd{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(6px)}}
+
+/* STATS */
+.stats{background:var(--accent);display:flex;justify-content:space-around;flex-wrap:wrap;padding:28px 40px;gap:16px}
+.stat-n{font-family:var(--H);font-size:2.4rem;font-weight:700;color:#fff;line-height:1}
+.stat-l{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.88);margin-top:2px}
+
+/* generic section */
+section{padding:88px 8%}
+section.alt{background:var(--light)}
+section.dark{background:var(--dark)}
+.s-tag{font-family:var(--H);font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);border-left:3px solid var(--accent);padding-left:10px;margin-bottom:10px}
+.s-title{font-family:var(--H);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:700;text-transform:uppercase;line-height:1.1;margin-bottom:14px;color:var(--dark)}
+.dark .s-title{color:#fff}
+.s-lead{font-size:1rem;color:#444;max-width:560px;font-weight:300;margin-bottom:44px;line-height:1.65}
+.dark .s-lead{color:#bbb}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.img-wrap{position:relative}
+.img-wrap img{width:100%;height:440px;object-fit:cover;display:block;border-radius:2px}
+.img-badge{position:absolute;bottom:-16px;right:-16px;background:var(--accent);color:#fff;font-family:var(--H);font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;padding:16px 20px;line-height:1.5;font-weight:700}
+.img-badge strong{font-size:1.9rem;display:block;line-height:1}
+.about-body h3{font-family:var(--H);font-size:1.5rem;font-weight:600;text-transform:uppercase;margin-bottom:14px}
+.about-body p{color:#333;margin-bottom:14px;font-weight:300;line-height:1.7}
+.check-list{list-style:none;margin:20px 0}
+.check-list li{padding:9px 0;border-bottom:1px solid #d0cbc4;font-size:0.95rem;color:#222;display:flex;align-items:center;gap:10px}
+.check-list li::before{content:'✓';color:var(--accent);font-weight:700}
+
+/* SERVICES */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.srv-card{position:relative;overflow:hidden;height:300px;cursor:pointer;background:#222}
+.srv-card img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.4);transition:transform .4s,filter .4s}
+.srv-card:hover img{transform:scale(1.07);filter:brightness(.25)}
+.srv-info{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:26px}
+.srv-num{font-family:var(--H);font-size:2.8rem;font-weight:700;color:var(--accent);opacity:.25;line-height:1;margin-bottom:-6px}
+.srv-name{font-family:var(--H);font-size:1.1rem;font-weight:600;text-transform:uppercase;color:#fff;letter-spacing:.5px;margin-bottom:6px}
+.srv-desc{font-size:0.82rem;color:#ddd;font-weight:300;max-width:230px;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+.srv-card:hover .srv-desc{opacity:1;transform:translateY(0)}
+
+/* PROCESS */
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.proc-step{text-align:center;position:relative}
+.proc-step:not(:last-child)::after{content:'';position:absolute;top:26px;right:-14px;width:28px;height:2px;background:var(--accent);opacity:.35}
+.proc-circle{width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--H);font-size:1.25rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.proc-t{font-family:var(--H);font-size:0.93rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;color:var(--dark)}
+.proc-d{font-size:0.86rem;color:#444;font-weight:300;line-height:1.6}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.proj-card{position:relative;overflow:hidden;border-radius:2px;background:#222}
+.proj-card img{width:100%;height:270px;object-fit:cover;display:block;transition:transform .4s}
+.proj-card:hover img{transform:scale(1.06)}
+.proj-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.9) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.proj-cat{font-family:var(--H);font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.proj-name{font-family:var(--H);font-size:0.93rem;font-weight:600;text-transform:uppercase;color:#fff;letter-spacing:.5px}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.why-item{display:flex;gap:18px;align-items:flex-start}
+.why-icon{width:46px;height:46px;border-radius:2px;background:var(--accent);color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.why-h{font-family:var(--H);font-size:0.93rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;color:var(--dark)}
+.why-p{font-size:0.88rem;color:#444;font-weight:300;line-height:1.6}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.testi{background:#1c1c1a;padding:30px 26px;border-top:3px solid var(--accent);border-radius:2px}
+.testi-q{font-family:Georgia,serif;font-size:2.8rem;color:var(--accent);line-height:1;margin-bottom:8px}
+.testi-txt{color:#ccc;font-size:0.92rem;font-weight:300;line-height:1.7;font-style:italic;margin-bottom:22px}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-av{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.testi-name{font-family:var(--H);font-size:0.83rem;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:.5px}
+.testi-loc{font-size:0.74rem;color:#666;margin-top:1px}
+
+/* CTA */
+.cta-banner{background:var(--accent);padding:68px 8%;text-align:center}
+.cta-banner h2{font-family:var(--H);font-size:clamp(1.6rem,3vw,2.5rem);font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:14px}
+.cta-banner p{color:rgba(255,255,255,.88);max-width:460px;margin:0 auto 30px;font-weight:300}
+
+/* FOOTER */
+footer{background:#0d0d0c;color:#888;padding:48px 8% 22px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:32px}
+.foot-brand .fn{font-family:var(--H);font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px}
+.foot-brand .fs{font-size:0.62rem;letter-spacing:1.5px;text-transform:uppercase;color:#555;margin-bottom:14px}
+.foot-brand p{font-size:0.85rem;line-height:1.7;max-width:280px}
+.foot-col h4{font-family:var(--H);font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:#fff;margin-bottom:14px}
+.foot-col ul{list-style:none}
+.foot-col li{margin-bottom:7px;font-size:0.85rem}
+.foot-col a{color:#777;text-decoration:none;cursor:pointer;transition:color .2s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bot{border-top:1px solid #1e1e1c;padding-top:18px;display:flex;justify-content:space-between;font-size:0.78rem;flex-wrap:wrap;gap:8px}
+.foot-bot a{color:#555;text-decoration:none}
+.foot-bot a:hover{color:var(--accent)}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:9999;justify-content:center;align-items:center;padding:20px}
+.overlay.open{display:flex}
+.modal{background:#fff;max-width:580px;width:100%;border-top:4px solid var(--accent);border-radius:2px;padding:44px 44px 36px;position:relative;max-height:90vh;overflow-y:auto}
+.modal-x{position:absolute;top:14px;right:18px;font-size:1.4rem;cursor:pointer;color:#aaa;background:none;border:none;line-height:1}
+.modal-x:hover{color:var(--accent)}
+.modal h2{font-family:var(--H);font-size:1.7rem;font-weight:700;text-transform:uppercase;margin-bottom:4px;color:var(--dark)}
+.modal-sub{color:#777;font-size:0.88rem;margin-bottom:26px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-family:var(--H);font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:#555;margin-bottom:5px}
+.fg input,.fg textarea,.fg select{width:100%;padding:11px 13px;border:1px solid #ddd;border-radius:2px;font-family:var(--B);font-size:0.93rem;color:var(--dark);background:#fafafa;transition:border-color .2s;resize:vertical}
+.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:var(--accent);background:#fff}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ci-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid #eee}
+.ci{display:flex;align-items:center;gap:7px;font-size:0.84rem;color:#555}
+.success{display:none;text-align:center;padding:28px 0}
+.success .ck{font-size:2.8rem;margin-bottom:10px}
+.success h3{font-family:var(--H);font-size:1.35rem;text-transform:uppercase;margin-bottom:6px;color:var(--dark)}
+.success p{color:#666;font-size:0.9rem}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+  .nav-right{display:none}
+  .burger{display:flex}
+  section{padding:68px 6%}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .img-badge{right:0}
+  .srv-grid{grid-template-columns:repeat(2,1fr)}
+  .proc-grid{grid-template-columns:repeat(2,1fr)}
+  .proc-step:nth-child(2)::after{display:none}
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:1fr;gap:14px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-brand{grid-column:1/-1}
+}
+@media(max-width:600px){
+  nav{padding:0 16px}
+  .hero-h1{font-size:2rem}
+  .srv-grid,.proj-grid,.proc-grid,.why-grid{grid-template-columns:1fr}
+  .proc-step::after{display:none!important}
+  .foot-grid{grid-template-columns:1fr}
+  .modal{padding:28px 18px 24px}
+  .fg-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#inicio">
+    <span class="logo-name">Antonio Construcciones</span>
+    <span class="logo-sub">Reformas · Burgos</span>
+  </a>
+  <!-- desktop nav + lang -->
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#inicio"      data-k="n.inicio">Inicio</a></li>
+      <li><a href="#nosotros"    data-k="n.sobre">Nosotros</a></li>
+      <li><a href="#servicios"   data-k="n.servicios">Servicios</a></li>
+      <li><a href="#proceso"     data-k="n.proceso">Proceso</a></li>
+      <li><a href="#proyectos"   data-k="n.proyectos">Proyectos</a></li>
+      <li><a href="#testimonios" data-k="n.testimonios">Testimonios</a></li>
+      <li><a class="btn nav-cta" style="padding:7px 16px;font-size:.78rem" onclick="abrirModal()" data-k="n.contacto">Contacto</a></li>
+    </ul>
+    <div class="lang-wrap">
+      <button class="lb on" onclick="setLang('es')">ES</button>
+      <button class="lb"    onclick="setLang('en')">EN</button>
+      <button class="lb"    onclick="setLang('de')">DE</button>
+    </div>
+  </div>
+  <!-- burger (mobile/tablet) -->
+  <button class="burger" id="burger" onclick="toggleBurger()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#inicio"      onclick="cerrarMob()" data-k="n.inicio">Inicio</a>
+  <a href="#nosotros"    onclick="cerrarMob()" data-k="n.sobre">Nosotros</a>
+  <a href="#servicios"   onclick="cerrarMob()" data-k="n.servicios">Servicios</a>
+  <a href="#proceso"     onclick="cerrarMob()" data-k="n.proceso">Proceso</a>
+  <a href="#proyectos"   onclick="cerrarMob()" data-k="n.proyectos">Proyectos</a>
+  <a href="#testimonios" onclick="cerrarMob()" data-k="n.testimonios">Testimonios</a>
+  <a onclick="cerrarMob();abrirModal()" data-k="n.contacto">Contacto</a>
+  <div class="mob-lang">
+    <button class="lb on" onclick="setLang('es')">ES</button>
+    <button class="lb"    onclick="setLang('en')">EN</button>
+    <button class="lb"    onclick="setLang('de')">DE</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="inicio" style="padding:0;height:calc(100vh - 0px)">
+  <img class="bg" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80" alt="Obras Burgos">
+  <div class="hero-inner">
+    <p class="tag" data-k="h.tag">Empresa de Reformas · Burgos, España</p>
+    <h1 class="hero-h1"><span data-k="h.t1">Reformas que </span><em data-k="h.t2">transforman</em><span data-k="h.t3"> tu hogar</span></h1>
+    <p class="hero-sub" data-k="h.sub">Más de 15 años renovando viviendas y locales en Burgos y toda Castilla y León. Calidad, confianza y resultados reales.</p>
+    <div>
+      <button class="btn" onclick="abrirModal()" data-k="h.cta1">Solicitar presupuesto</button>
+      <a class="btn btn-ol" href="#proyectos" data-k="h.cta2">Ver proyectos</a>
+    </div>
+  </div>
+  <div class="scroll-dot"><span></span></div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div><div class="stat-n">+200</div><div class="stat-l" data-k="st.1">Proyectos realizados</div></div>
+  <div><div class="stat-n">15</div><div class="stat-l" data-k="st.2">Años de experiencia</div></div>
+  <div><div class="stat-n">98%</div><div class="stat-l" data-k="st.3">Clientes satisfechos</div></div>
+  <div><div class="stat-n">48h</div><div class="stat-l" data-k="st.4">Respuesta garantizada</div></div>
+</div>
+
+<!-- ABOUT -->
+<section id="nosotros">
+  <div class="about-grid">
+    <div class="img-wrap">
+      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80" alt="Antonio en obra">
+      <div class="img-badge"><strong>+15</strong> años en Burgos</div>
+    </div>
+    <div class="about-body">
+      <p class="s-tag" data-k="a.tag">Quiénes somos</p>
+      <h2 class="s-title" data-k="a.title">Antonio García,<br>tu especialista en reformas</h2>
+      <p data-k="a.p1">Soy Antonio García, fundador de Antonio Construcciones. Llevo más de 15 años renovando viviendas, baños, cocinas y locales en Burgos. Trabajo personalmente en cada proyecto para garantizar la máxima calidad.</p>
+      <p data-k="a.p2">Cada reforma es única. Por eso ofrezco un presupuesto detallado, plazos claros y comunicación constante. Sin sorpresas.</p>
+      <ul class="check-list">
+        <li data-k="a.l1">Presupuesto gratuito en 48 horas</li>
+        <li data-k="a.l2">Materiales de primera calidad</li>
+        <li data-k="a.l3">Trabajo limpio y puntual</li>
+        <li data-k="a.l4">Garantía en todos los trabajos</li>
+        <li data-k="a.l5">Empresa registrada y con seguro</li>
+      </ul>
+      <button class="btn" onclick="abrirModal()" data-k="a.cta">Hablemos de tu proyecto</button>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="servicios" class="dark" style="padding-bottom:0">
+  <div style="padding-bottom:40px">
+    <p class="s-tag" data-k="sv.tag">Lo que hacemos</p>
+    <h2 class="s-title" data-k="sv.title">Nuestros Servicios</h2>
+    <p class="s-lead" data-k="sv.lead">Especializados en reformas integrales, desde una sola habitación hasta viviendas completas.</p>
+  </div>
+  <div class="srv-grid">
+    <div class="srv-card">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=75" alt="Cocina">
+      <div class="srv-info"><div class="srv-num">01</div><div class="srv-name" data-k="s1.n">Reforma de cocinas</div><div class="srv-desc" data-k="s1.d">Diseño y renovación completa. Muebles, electrodomésticos y encimeras.</div></div>
+    </div>
+    <div class="srv-card">
+      <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=75" alt="Baño">
+      <div class="srv-info"><div class="srv-num">02</div><div class="srv-name" data-k="s2.n">Reforma de baños</div><div class="srv-desc" data-k="s2.d">Renovación total o parcial. Plaqueta, sanitarios, fontanería y acabados.</div></div>
+    </div>
+    <div class="srv-card">
+      <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=75" alt="Integral">
+      <div class="srv-info"><div class="srv-num">03</div><div class="srv-name" data-k="s3.n">Reformas integrales</div><div class="srv-desc" data-k="s3.d">Renovación completa del piso: suelos, pintura, carpintería y más.</div></div>
+    </div>
+    <div class="srv-card">
+      <img src="https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?auto=format&fit=crop&w=800&q=75" alt="Pintura">
+      <div class="srv-info"><div class="srv-num">04</div><div class="srv-name" data-k="s4.n">Pintura y acabados</div><div class="srv-desc" data-k="s4.d">Pintura interior y exterior, estucados, barnizados y decorativos.</div></div>
+    </div>
+    <div class="srv-card">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=75" alt="Suelos">
+      <div class="srv-info"><div class="srv-num">05</div><div class="srv-name" data-k="s5.n">Suelos y alicatados</div><div class="srv-desc" data-k="s5.d">Parquet, tarima, gres, cerámica y todo tipo de revestimientos.</div></div>
+    </div>
+    <div class="srv-card">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=75" alt="Obra">
+      <div class="srv-info"><div class="srv-num">06</div><div class="srv-name" data-k="s6.n">Locales y obra nueva</div><div class="srv-desc" data-k="s6.d">Acondicionamiento de locales y construcción nueva en Burgos.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="proceso">
+  <p class="s-tag" data-k="pr.tag">Cómo trabajamos</p>
+  <h2 class="s-title" data-k="pr.title">Nuestro proceso</h2>
+  <p class="s-lead" data-k="pr.lead">Trabajamos de forma ordenada y transparente para que siempre sepas en qué punto está tu reforma.</p>
+  <div class="proc-grid">
+    <div class="proc-step"><div class="proc-circle">1</div><div class="proc-t" data-k="p1.t">Consulta gratuita</div><div class="proc-d" data-k="p1.d">Contactas con nosotros y concertamos una visita sin compromiso.</div></div>
+    <div class="proc-step"><div class="proc-circle">2</div><div class="proc-t" data-k="p2.t">Presupuesto detallado</div><div class="proc-d" data-k="p2.d">En 48 horas recibes un presupuesto claro con todos los trabajos y plazos.</div></div>
+    <div class="proc-step"><div class="proc-circle">3</div><div class="proc-t" data-k="p3.t">Ejecución puntual</div><div class="proc-d" data-k="p3.d">Comenzamos en la fecha acordada. Antonio supervisa personalmente cada fase.</div></div>
+    <div class="proc-step"><div class="proc-circle">4</div><div class="proc-t" data-k="p4.t">Entrega y garantía</div><div class="proc-d" data-k="p4.d">Entregamos la obra limpia y en plazo, con garantía de mano de obra.</div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="proyectos" class="alt">
+  <p class="s-tag" data-k="pj.tag">Trabajos realizados</p>
+  <h2 class="s-title" data-k="pj.title">Proyectos recientes</h2>
+  <p class="s-lead" data-k="pj.lead">Algunos de los trabajos realizados en Burgos y alrededores en los últimos años.</p>
+  <div class="proj-grid">
+    <div class="proj-card"><img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=700&q=75" alt="Cocina"><div class="proj-over"><div class="proj-cat" data-k="pc.1">Reforma de cocina</div><div class="proj-name">Gamonal, Burgos — 2024</div></div></div>
+    <div class="proj-card"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=700&q=75" alt="Baño"><div class="proj-over"><div class="proj-cat" data-k="pc.2">Reforma de baño</div><div class="proj-name">Casco Antiguo, Burgos — 2024</div></div></div>
+    <div class="proj-card"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=75" alt="Salón"><div class="proj-over"><div class="proj-cat" data-k="pc.3">Reforma integral</div><div class="proj-name">Aranda de Duero — 2023</div></div></div>
+    <div class="proj-card"><img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=700&q=75" alt="Local"><div class="proj-over"><div class="proj-cat" data-k="pc.4">Local comercial</div><div class="proj-name">Centro, Burgos — 2023</div></div></div>
+    <div class="proj-card"><img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=700&q=75" alt="Suelo"><div class="proj-over"><div class="proj-cat" data-k="pc.5">Suelos y tarima</div><div class="proj-name">Villalonquéjar — 2023</div></div></div>
+    <div class="proj-card"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=75" alt="Pintura"><div class="proj-over"><div class="proj-cat" data-k="pc.6">Pintura y acabados</div><div class="proj-name">Miranda de Ebro — 2022</div></div></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="porque">
+  <p class="s-tag" data-k="w.tag">Por qué elegirnos</p>
+  <h2 class="s-title" data-k="w.title">Razones para confiar en nosotros</h2>
+  <p class="s-lead" data-k="w.lead">Estas son las razones por las que nuestros clientes en Burgos nos recomiendan.</p>
+  <div class="why-grid">
+    <div class="why-item"><div class="why-icon">🏆</div><div><div class="why-h" data-k="w1.t">15 años de experiencia</div><p class="why-p" data-k="w1.d">Más de 200 reformas en Burgos y Castilla y León. Conocemos cada tipo de vivienda.</p></div></div>
+    <div class="why-item"><div class="why-icon">📋</div><div><div class="why-h" data-k="w2.t">Presupuesto sin sorpresas</div><p class="why-p" data-k="w2.d">El precio acordado es el precio final. Sin costes ocultos ni imprevistos.</p></div></div>
+    <div class="why-item"><div class="why-icon">⏱️</div><div><div class="why-h" data-k="w3.t">Cumplimos los plazos</div><p class="why-p" data-k="w3.d">Fijamos una fecha de entrega y la cumplimos. Siempre.</p></div></div>
+    <div class="why-item"><div class="why-icon">🛡️</div><div><div class="why-h" data-k="w4.t">Empresa asegurada</div><p class="why-p" data-k="w4.d">Seguro de responsabilidad civil y garantías por escrito en todos los trabajos.</p></div></div>
+    <div class="why-item"><div class="why-icon">🔨</div><div><div class="why-h" data-k="w5.t">Materiales de calidad</div><p class="why-p" data-k="w5.d">Solo trabajamos con proveedores de confianza para reformas duraderas.</p></div></div>
+    <div class="why-item"><div class="why-icon">💬</div><div><div class="why-h" data-k="w6.t">Contacto directo con Antonio</div><p class="why-p" data-k="w6.d">Sin intermediarios ni malentendidos. Respuesta en menos de 24 horas.</p></div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonios" class="dark">
+  <p class="s-tag" data-k="te.tag">Opiniones</p>
+  <h2 class="s-title" data-k="te.title">Lo que dicen nuestros clientes</h2>
+  <div class="testi-grid">
+    <div class="testi"><div class="testi-q">"</div><p class="testi-txt" data-k="t1">Antonio reformó nuestro baño y quedó espectacular. Cumplió los plazos y el precio acordado al céntimo. Le recomendaría sin dudarlo a cualquier persona de Burgos.</p><div class="testi-author"><img class="testi-av" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="María"><div><div class="testi-name">María J.</div><div class="testi-loc">Gamonal, Burgos</div></div></div></div>
+    <div class="testi"><div class="testi-q">"</div><p class="testi-txt" data-k="t2">Reforma integral del piso heredado. Antonio gestionó todo: suelos, cocina, baños y pintura. En 6 semanas el piso era irreconocible.</p><div class="testi-author"><img class="testi-av" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Carlos"><div><div class="testi-name">Carlos M.</div><div class="testi-loc">Burgos Centro</div></div></div></div>
+    <div class="testi"><div class="testi-q">"</div><p class="testi-txt" data-k="t3">Acondicioné mi local con Antonio Construcciones. Muy profesional, cumplió los plazos y quedé encantada. Volvería a contratarle sin dudar.</p><div class="testi-author"><img class="testi-av" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="Elena"><div><div class="testi-name">Elena R.</div><div class="testi-loc">Miranda de Ebro</div></div></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2 data-k="ct.t">¿Tienes un proyecto en mente?</h2>
+  <p data-k="ct.s">Cuéntanos qué necesitas. Presupuesto detallado y gratuito en menos de 48 horas.</p>
+  <button class="btn" style="background:#fff;color:var(--accent)" onclick="abrirModal()" data-k="ct.b">Solicitar presupuesto gratis</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="fn">Antonio Construcciones</div>
+      <div class="fs">Reformas · Burgos, España</div>
+      <p>Empresa de reformas en Burgos con más de 15 años de experiencia. Especialistas en reformas integrales de viviendas y locales en Castilla y León.</p>
+    </div>
+    <div class="foot-col">
+      <h4 data-k="f.nav">Navegación</h4>
+      <ul>
+        <li><a href="#inicio" data-k="n.inicio">Inicio</a></li>
+        <li><a href="#nosotros" data-k="n.sobre">Nosotros</a></li>
+        <li><a href="#servicios" data-k="n.servicios">Servicios</a></li>
+        <li><a href="#proyectos" data-k="n.proyectos">Proyectos</a></li>
+        <li><a onclick="abrirModal()" data-k="n.contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4 data-k="f.cnt">Contacto</h4>
+      <ul>
+        <li>📍 Burgos, Castilla y León</li>
+        <li>📞 <a href="tel:+34947000000">+34 947 000 000</a></li>
+        <li>✉️ <a href="mailto:info@antonio-construcciones.es">info@antonio-construcciones.es</a></li>
+        <li>🕐 Lun–Vie: 8:00–18:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2025 Antonio Construcciones · Burgos</span>
+    <span><a href="#" data-k="f.av">Aviso legal</a> · <a href="#" data-k="f.pr">Privacidad</a></span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="overlayClick(event)">
+  <div class="modal">
+    <button class="modal-x" onclick="cerrarModal()">✕</button>
+    <h2 data-k="m.t">Contacto</h2>
+    <p class="modal-sub" data-k="m.s">Rellena el formulario y te respondemos en menos de 48 horas.</p>
+    <div id="mForm">
+      <div class="fg-row">
+        <div class="fg"><label data-k="f.nom">Nombre *</label><input type="text" id="fN" placeholder="Tu nombre"></div>
+        <div class="fg"><label data-k="f.tel">Teléfono *</label><input type="tel" id="fT" placeholder="+34 6xx xxx xxx"></div>
+      </div>
+      <div class="fg"><label data-k="f.em">Email</label><input type="email" id="fE" placeholder="tucorreo@ejemplo.com"></div>
+      <div class="fg">
+        <label data-k="f.srv">Tipo de reforma</label>
+        <select id="fS">
+          <option data-k="f.sel">Selecciona un servicio...</option>
+          <option data-k="s1.n">Reforma de cocinas</option>
+          <option data-k="s2.n">Reforma de baños</option>
+          <option data-k="s3.n">Reformas integrales</option>
+          <option data-k="s4.n">Pintura y acabados</option>
+          <option data-k="s5.n">Suelos y alicatados</option>
+          <option data-k="s6.n">Locales y obra nueva</option>
+          <option data-k="f.otro">Otro</option>
+        </select>
+      </div>
+      <div class="fg"><label data-k="f.msg">Mensaje *</label><textarea id="fM" rows="4" placeholder="Describe brevemente tu proyecto..."></textarea></div>
+      <button class="btn" style="width:100%;display:block;text-align:center" onclick="enviarForm()" data-k="f.send">Enviar solicitud</button>
+      <div class="ci-strip">
+        <div class="ci">📞 +34 947 000 000</div>
+        <div class="ci">📍 Burgos, España</div>
+        <div class="ci">⏱ <span data-k="f.resp">Resp. en 48h</span></div>
+      </div>
+    </div>
+    <div class="success" id="mOk">
+      <div class="ck">✅</div>
+      <h3 data-k="ok.t">¡Mensaje enviado!</h3>
+      <p data-k="ok.d">Antonio te responderá en menos de 48 horas para hablar de tu proyecto.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const T={
+  es:{
+    "n.inicio":"Inicio","n.sobre":"Nosotros","n.servicios":"Servicios","n.proceso":"Proceso","n.proyectos":"Proyectos","n.testimonios":"Testimonios","n.contacto":"Contacto",
+    "h.tag":"Empresa de Reformas · Burgos, España","h.t1":"Reformas que ","h.t2":"transforman","h.t3":" tu hogar",
+    "h.sub":"Más de 15 años renovando viviendas y locales en Burgos y toda Castilla y León. Calidad, confianza y resultados reales.",
+    "h.cta1":"Solicitar presupuesto","h.cta2":"Ver proyectos",
+    "st.1":"Proyectos realizados","st.2":"Años de experiencia","st.3":"Clientes satisfechos","st.4":"Respuesta garantizada",
+    "a.tag":"Quiénes somos","a.title":"Antonio García,<br>tu especialista en reformas",
+    "a.p1":"Soy Antonio García, fundador de Antonio Construcciones. Llevo más de 15 años renovando viviendas, baños, cocinas y locales en Burgos. Trabajo personalmente en cada proyecto para garantizar la máxima calidad.",
+    "a.p2":"Cada reforma es única. Por eso ofrezco un presupuesto detallado, plazos claros y comunicación constante. Sin sorpresas.",
+    "a.l1":"Presupuesto gratuito en 48 horas","a.l2":"Materiales de primera calidad","a.l3":"Trabajo limpio y puntual","a.l4":"Garantía en todos los trabajos","a.l5":"Empresa registrada y con seguro",
+    "a.cta":"Hablemos de tu proyecto",
+    "sv.tag":"Lo que hacemos","sv.title":"Nuestros Servicios","sv.lead":"Especializados en reformas integrales, desde una sola habitación hasta viviendas completas.",
+    "s1.n":"Reforma de cocinas","s1.d":"Diseño y renovación completa. Muebles, electrodomésticos y encimeras.",
+    "s2.n":"Reforma de baños","s2.d":"Renovación total o parcial. Plaqueta, sanitarios, fontanería y acabados.",
+    "s3.n":"Reformas integrales","s3.d":"Renovación completa del piso: suelos, pintura, carpintería y más.",
+    "s4.n":"Pintura y acabados","s4.d":"Pintura interior y exterior, estucados, barnizados y decorativos.",
+    "s5.n":"Suelos y alicatados","s5.d":"Parquet, tarima, gres, cerámica y todo tipo de revestimientos.",
+    "s6.n":"Locales y obra nueva","s6.d":"Acondicionamiento de locales y construcción nueva en Burgos.",
+    "pr.tag":"Cómo trabajamos","pr.title":"Nuestro proceso","pr.lead":"Trabajamos de forma ordenada y transparente para que siempre sepas en qué punto está tu reforma.",
+    "p1.t":"Consulta gratuita","p1.d":"Contactas con nosotros y concertamos una visita sin compromiso.",
+    "p2.t":"Presupuesto detallado","p2.d":"En 48 horas recibes un presupuesto claro con todos los trabajos y plazos.",
+    "p3.t":"Ejecución puntual","p3.d":"Comenzamos en la fecha acordada. Antonio supervisa personalmente cada fase.",
+    "p4.t":"Entrega y garantía","p4.d":"Entregamos la obra limpia y en plazo, con garantía de mano de obra.",
+    "pj.tag":"Trabajos realizados","pj.title":"Proyectos recientes","pj.lead":"Algunos de los trabajos realizados en Burgos y alrededores en los últimos años.",
+    "pc.1":"Reforma de cocina","pc.2":"Reforma de baño","pc.3":"Reforma integral","pc.4":"Local comercial","pc.5":"Suelos y tarima","pc.6":"Pintura y acabados",
+    "w.tag":"Por qué elegirnos","w.title":"Razones para confiar en nosotros","w.lead":"Estas son las razones por las que nuestros clientes en Burgos nos recomiendan.",
+    "w1.t":"15 años de experiencia","w1.d":"Más de 200 reformas en Burgos y Castilla y León.",
+    "w2.t":"Presupuesto sin sorpresas","w2.d":"El precio acordado es el precio final. Sin costes ocultos.",
+    "w3.t":"Cumplimos los plazos","w3.d":"Fijamos una fecha de entrega y la cumplimos siempre.",
+    "w4.t":"Empresa asegurada","w4.d":"Seguro de responsabilidad civil y garantías por escrito.",
+    "w5.t":"Materiales de calidad","w5.d":"Solo trabajamos con proveedores de confianza.",
+    "w6.t":"Contacto directo con Antonio","w6.d":"Sin intermediarios. Respuesta en menos de 24 horas.",
+    "te.tag":"Opiniones","te.title":"Lo que dicen nuestros clientes",
+    "t1":"Antonio reformó nuestro baño y quedó espectacular. Cumplió los plazos y el precio acordado al céntimo. Le recomendaría sin dudarlo.","t2":"Reforma integral del piso heredado. Antonio gestionó todo en 6 semanas. Precio muy competitivo para la calidad.","t3":"Acondicioné mi local con Antonio Construcciones. Muy profesional, cumplió los plazos y quedé encantada.",
+    "ct.t":"¿Tienes un proyecto en mente?","ct.s":"Cuéntanos qué necesitas. Presupuesto detallado y gratuito en menos de 48 horas.","ct.b":"Solicitar presupuesto gratis",
+    "f.nav":"Navegación","f.cnt":"Contacto","f.av":"Aviso legal","f.pr":"Privacidad",
+    "m.t":"Contacto","m.s":"Rellena el formulario y te respondemos en menos de 48 horas.",
+    "f.nom":"Nombre *","f.tel":"Teléfono *","f.em":"Email","f.srv":"Tipo de reforma","f.sel":"Selecciona un servicio...","f.otro":"Otro","f.msg":"Mensaje *","f.send":"Enviar solicitud","f.resp":"Resp. en 48h",
+    "ok.t":"¡Mensaje enviado!","ok.d":"Antonio te responderá en menos de 48 horas."
+  },
+  en:{
+    "n.inicio":"Home","n.sobre":"About","n.servicios":"Services","n.proceso":"Process","n.proyectos":"Projects","n.testimonios":"Reviews","n.contacto":"Contact",
+    "h.tag":"Renovation Company · Burgos, Spain","h.t1":"Renovations that ","h.t2":"transform","h.t3":" your home",
+    "h.sub":"Over 15 years renovating homes and premises in Burgos and Castilla y León. Quality, trust and real results.",
+    "h.cta1":"Request a quote","h.cta2":"View projects",
+    "st.1":"Projects completed","st.2":"Years of experience","st.3":"Satisfied clients","st.4":"Guaranteed response",
+    "a.tag":"About us","a.title":"Antonio García,<br>your renovation specialist",
+    "a.p1":"I'm Antonio García, founder of Antonio Construcciones. For over 15 years I have been renovating homes, bathrooms, kitchens and commercial premises in Burgos, personally overseeing every project.",
+    "a.p2":"Every renovation is unique. I offer a detailed quote, clear timelines and constant communication. No surprises.",
+    "a.l1":"Free quote within 48 hours","a.l2":"High-quality materials","a.l3":"Clean and punctual work","a.l4":"Warranty on all work","a.l5":"Registered and insured company",
+    "a.cta":"Let's talk about your project",
+    "sv.tag":"What we do","sv.title":"Our Services","sv.lead":"Specialists in full renovations, from a single room to complete homes.",
+    "s1.n":"Kitchen renovation","s1.d":"Full design and renovation. Furniture, appliances and worktops.",
+    "s2.n":"Bathroom renovation","s2.d":"Total or partial renovation. Tiling, sanitary ware, plumbing and finishes.",
+    "s3.n":"Full renovations","s3.d":"Complete apartment renovation: flooring, painting, carpentry and more.",
+    "s4.n":"Painting & finishes","s4.d":"Interior and exterior painting, stucco, varnishing and decorative treatments.",
+    "s5.n":"Flooring & tiling","s5.d":"Parquet, laminate, porcelain, ceramic and all types of cladding.",
+    "s6.n":"Commercial & new builds","s6.d":"Commercial fit-out and new construction in Burgos.",
+    "pr.tag":"How we work","pr.title":"Our process","pr.lead":"We work in an organised and transparent way so you always know where your renovation stands.",
+    "p1.t":"Free consultation","p1.d":"Contact us and we'll arrange a no-obligation visit to your property.",
+    "p2.t":"Detailed quote","p2.d":"Within 48 hours you receive a clear quote with all works and timelines.",
+    "p3.t":"On-time execution","p3.d":"We start on the agreed date. Antonio personally supervises every phase.",
+    "p4.t":"Delivery & warranty","p4.d":"We hand over clean and on time, with a labour warranty included.",
+    "pj.tag":"Completed work","pj.title":"Recent projects","pj.lead":"A selection of jobs completed in Burgos and surrounding areas in recent years.",
+    "pc.1":"Kitchen renovation","pc.2":"Bathroom renovation","pc.3":"Full renovation","pc.4":"Commercial premises","pc.5":"Flooring & laminate","pc.6":"Painting & finishes",
+    "w.tag":"Why choose us","w.title":"Reasons to trust us","w.lead":"Here's why our clients in Burgos recommend us.",
+    "w1.t":"15 years of experience","w1.d":"Over 200 renovations in Burgos and Castilla y León.",
+    "w2.t":"No surprise quotes","w2.d":"The agreed price is the final price. No hidden costs.",
+    "w3.t":"We meet deadlines","w3.d":"We set a delivery date and we keep it. Always.",
+    "w4.t":"Insured and registered","w4.d":"Public liability insurance and written warranties.",
+    "w5.t":"Quality materials","w5.d":"We only work with trusted suppliers.",
+    "w6.t":"Direct contact with Antonio","w6.d":"No middlemen. Reply within 24 hours.",
+    "te.tag":"Reviews","te.title":"What our clients say",
+    "t1":"Antonio renovated our bathroom and it looked amazing. He met all deadlines and the agreed price to the cent. I'd recommend him without hesitation.","t2":"Full renovation of an inherited flat. Antonio handled everything in 6 weeks. Very competitive for the quality.","t3":"I had Antonio fit out my shop. Very professional, met deadlines and I was delighted with the result.",
+    "ct.t":"Do you have a project in mind?","ct.s":"Tell us what you need. Detailed free quote in less than 48 hours.","ct.b":"Request a free quote",
+    "f.nav":"Navigation","f.cnt":"Contact","f.av":"Legal notice","f.pr":"Privacy",
+    "m.t":"Contact","m.s":"Fill in the form and we'll get back to you within 48 hours.",
+    "f.nom":"Name *","f.tel":"Phone *","f.em":"Email","f.srv":"Type of renovation","f.sel":"Select a service...","f.otro":"Other","f.msg":"Message *","f.send":"Send request","f.resp":"Reply in 48h",
+    "ok.t":"Message sent!","ok.d":"Antonio will reply within 48 hours to discuss your project."
+  },
+  de:{
+    "n.inicio":"Start","n.sobre":"Über uns","n.servicios":"Leistungen","n.proceso":"Ablauf","n.proyectos":"Projekte","n.testimonios":"Bewertungen","n.contacto":"Kontakt",
+    "h.tag":"Renovierungsunternehmen · Burgos, Spanien","h.t1":"Renovierungen, die Ihr Zuhause ","h.t2":"verwandeln","h.t3":"",
+    "h.sub":"Über 15 Jahre Erfahrung in der Sanierung von Wohnungen und Gewerberäumen in Burgos und Kastilien-León.",
+    "h.cta1":"Angebot anfordern","h.cta2":"Projekte ansehen",
+    "st.1":"Abgeschlossene Projekte","st.2":"Jahre Erfahrung","st.3":"Zufriedene Kunden","st.4":"Garantierte Antwort",
+    "a.tag":"Über uns","a.title":"Antonio García,<br>Ihr Renovierungsspezialist",
+    "a.p1":"Ich bin Antonio García, Gründer von Antonio Construcciones. Seit über 15 Jahren renoviere ich Wohnungen, Bäder, Küchen und Gewerberäume in Burgos und arbeite persönlich an jedem Projekt.",
+    "a.p2":"Jede Renovierung ist einzigartig. Ich biete ein detailliertes Angebot, klare Fristen und ständige Kommunikation. Ohne Überraschungen.",
+    "a.l1":"Kostenloses Angebot in 48 Stunden","a.l2":"Hochwertige Materialien","a.l3":"Saubere und pünktliche Arbeit","a.l4":"Garantie auf alle Arbeiten","a.l5":"Eingetragenes und versichertes Unternehmen",
+    "a.cta":"Über Ihr Projekt sprechen",
+    "sv.tag":"Was wir tun","sv.title":"Unsere Leistungen","sv.lead":"Spezialisiert auf Komplettsanierungen, vom Einzelzimmer bis zur kompletten Wohnung.",
+    "s1.n":"Küchenrenovierung","s1.d":"Komplette Planung und Renovierung. Möbel, Geräte und Arbeitsplatten.",
+    "s2.n":"Badrenovierung","s2.d":"Voll- oder Teilrenovierung. Fliesen, Sanitär, Rohrleitungen und Ausstattung.",
+    "s3.n":"Komplettsanierung","s3.d":"Vollständige Wohnungssanierung: Böden, Farben, Schreinerarbeiten und mehr.",
+    "s4.n":"Malerarbeiten","s4.d":"Innen- und Außenanstrich, Putzarbeiten, Lackierungen und Dekorbehandlungen.",
+    "s5.n":"Böden & Fliesen","s5.d":"Parkett, Laminat, Steinzeug, Keramik und alle Arten von Belägen.",
+    "s6.n":"Gewerbe & Neubau","s6.d":"Ausbau von Gewerberäumen und Neubauarbeiten in Burgos.",
+    "pr.tag":"So arbeiten wir","pr.title":"Unser Ablauf","pr.lead":"Wir arbeiten geordnet und transparent, damit Sie immer den Überblick haben.",
+    "p1.t":"Kostenlose Beratung","p1.d":"Kontaktieren Sie uns für einen unverbindlichen Besichtigungstermin.",
+    "p2.t":"Detailliertes Angebot","p2.d":"In 48 Stunden erhalten Sie ein klares Angebot mit allen Arbeiten und Fristen.",
+    "p3.t":"Pünktliche Ausführung","p3.d":"Wir beginnen am vereinbarten Datum. Antonio überwacht jede Phase persönlich.",
+    "p4.t":"Übergabe & Garantie","p4.d":"Saubere und pünktliche Übergabe mit Handwerksgarantie.",
+    "pj.tag":"Abgeschlossene Arbeiten","pj.title":"Aktuelle Projekte","pj.lead":"Eine Auswahl unserer Projekte in Burgos und Umgebung der letzten Jahre.",
+    "pc.1":"Küchenrenovierung","pc.2":"Badrenovierung","pc.3":"Komplettsanierung","pc.4":"Gewerberaum","pc.5":"Böden & Laminat","pc.6":"Malerarbeiten",
+    "w.tag":"Warum wir","w.title":"Gründe, uns zu vertrauen","w.lead":"Das sind die Gründe, warum unsere Kunden in Burgos uns empfehlen.",
+    "w1.t":"15 Jahre Erfahrung","w1.d":"Über 200 Renovierungen in Burgos und Kastilien-León.",
+    "w2.t":"Preise ohne Überraschungen","w2.d":"Der vereinbarte Preis ist der Endpreis. Keine versteckten Kosten.",
+    "w3.t":"Wir halten Fristen ein","w3.d":"Wir legen einen Liefertermin fest und halten ihn immer ein.",
+    "w4.t":"Versichert und eingetragen","w4.d":"Haftpflichtversicherung und schriftliche Garantien.",
+    "w5.t":"Hochwertige Materialien","w5.d":"Wir arbeiten nur mit vertrauenswürdigen Lieferanten.",
+    "w6.t":"Direktkontakt mit Antonio","w6.d":"Keine Zwischenhändler. Antwort innerhalb von 24 Stunden.",
+    "te.tag":"Bewertungen","te.title":"Was unsere Kunden sagen",
+    "t1":"Antonio hat unser Bad renoviert und es sah fantastisch aus. Alle Fristen und der vereinbarte Preis wurden eingehalten. Klare Empfehlung.","t2":"Komplettsanierung einer geerbten Wohnung. Antonio hat alles in 6 Wochen erledigt. Sehr gutes Preis-Leistungs-Verhältnis.","t3":"Ich ließ meinen Laden ausbauen. Sehr professionell, pünktlich und ein tolles Ergebnis.",
+    "ct.t":"Haben Sie ein Projekt geplant?","ct.s":"Erzählen Sie uns, was Sie brauchen. Kostenloses Angebot in weniger als 48 Stunden.","ct.b":"Kostenloses Angebot",
+    "f.nav":"Navigation","f.cnt":"Kontakt","f.av":"Impressum","f.pr":"Datenschutz",
+    "m.t":"Kontakt","m.s":"Füllen Sie das Formular aus — wir melden uns innerhalb von 48 Stunden.",
+    "f.nom":"Name *","f.tel":"Telefon *","f.em":"E-Mail","f.srv":"Renovierungsart","f.sel":"Service auswählen...","f.otro":"Sonstiges","f.msg":"Nachricht *","f.send":"Anfrage senden","f.resp":"Antwort in 48h",
+    "ok.t":"Nachricht gesendet!","ok.d":"Antonio antwortet Ihnen innerhalb von 48 Stunden."
+  }
+};
+
+let lang='es';
+
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('on',b.textContent===l.toUpperCase()));
+  document.querySelectorAll('[data-k]').forEach(el=>{
+    const v=T[l][el.getAttribute('data-k')];
+    if(v===undefined)return;
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')return;
+    el.innerHTML=v;
+  });
+  document.documentElement.lang=l;
+}
+
+function toggleBurger(){
+  document.getElementById('burger').classList.toggle('open');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function cerrarMob(){
+  document.getElementById('burger').classList.remove('open');
+  document.getElementById('mobMenu').classList.remove('open');
+}
+
+function abrirModal(){
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('mForm').style.display='block';
+  document.getElementById('mOk').style.display='none';
+}
+function cerrarModal(){
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function overlayClick(e){if(e.target===document.getElementById('overlay'))cerrarModal()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrarModal()});
+
+function enviarForm(){
+  if(!document.getElementById('fN').value.trim()||!document.getElementById('fT').value.trim()||!document.getElementById('fM').value.trim()){
+    alert(lang==='de'?'Bitte füllen Sie alle Pflichtfelder aus.':lang==='en'?'Please fill in all required fields.':'Por favor rellena todos los campos obligatorios.');
+    return;
+  }
+  document.getElementById('mForm').style.display='none';
+  document.getElementById('mOk').style.display='block';
+}
+</script>
+</body>
+</html>
